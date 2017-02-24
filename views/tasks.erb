@@ -1,0 +1,22 @@
+<form action="/add_task" method="POST">
+<input type="text" name="task"/><br>
+<input type="submit" value="add task"/>
+</form>
+<ul>
+<% tasks.each do |task| %>
+	<li> 
+		<% if task.complete == true %>
+			<h1><%= task.task %></h1>
+		<% else %>
+			<%= task.task %>
+		<% end %>	 
+		<form action="/remove_task" method="POST">		
+		<input type="hidden" name="task" value="<%=task.id%>"/>
+		<button type="submit">X</button></form>
+		
+	</li>
+<% end %>
+</ul>
+<style>	
+.done{font-color:red}
+</style>
